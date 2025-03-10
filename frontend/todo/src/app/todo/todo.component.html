@@ -1,0 +1,30 @@
+<H1>Order</H1>
+
+<div class="container">
+  <div class="alert alert-warning" *ngIf="todoForm.dirty && todoForm.invalid">Enter valid values</div>
+  <div class="alert alert-warning" *ngIf="todoForm.dirty && targetDate.invalid">Enter valid Target Date</div>
+  <div class="alert alert-warning" *ngIf="todoForm.dirty && description.invalid">Enter atleast 5 characters in Description</div>
+  
+  <form (ngSubmit)="!todoForm.invalid && saveTodo()" #todoForm="ngForm">
+    <fieldset class="form-group">
+      <label>ItemName</label>
+      <input type="text" #itemName="ngModel" 
+            [(ngModel)]="todo.itemName" class="form-control" 
+                name="itemName" required="required">
+    </fieldset>
+    <fieldset class="form-group">
+        <label>Date Of Order</label>
+        <input type="date" #orderDate="ngModel"
+        [ngModel]="todo.orderDate | date:'yyyy-MM-dd' "
+        (ngModelChange)="todo.orderDate = $event"
+        class="form-control" name="orderDate" required="required" >
+    </fieldset>
+    <fieldset class="form-group">
+      <label>Total Amount</label>
+      <input type="text" #totalAmount="ngModel" 
+            [(ngModel)]="todo.totalAmount" class="form-control" 
+                name="totalAmount" required="required">
+    </fieldset>
+    <button type="submit" class="btn btn-success">Save</button>
+  </form>  
+</div>

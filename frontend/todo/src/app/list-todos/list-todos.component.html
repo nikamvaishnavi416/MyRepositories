@@ -1,0 +1,38 @@
+<h1> List of Orders </h1>
+
+<div class="alert alert-success" *ngIf='message'>{{message}}</div>
+
+<div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Order NO</th>
+        <th>Order Date</th>
+    <!--    <th>is Completed?</th>-->
+        <th>Item Name</th>
+        <th>Total Amount</th>
+        <th>Update</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!--   for (Todo todo: todos) {  -->
+              <tr *ngFor="let todo of todos">
+                <td>{{todo.id}}</td>
+                <td>{{todo.orderDate | date | uppercase}}</td>
+                <!--<td>{{todo.isCompleted}}</td>-->
+                <td>{{todo.itemName}}</td>
+                <td>{{todo.totalAmount}}</td>
+                <td><button (click)="updateTodo(todo.id)" class="btn btn-success">Update</button></td>
+                <td><button (click)="deleteTodo(todo.id)" class="btn btn-warning">Delete</button></td>
+              </tr>
+      <!-- } -->
+    </tbody>
+
+  </table>
+
+  <div class="row">
+      <button (click)="addTodo()" class="btn btn-success">Place New Order</button>
+  </div>
+
+</div>
